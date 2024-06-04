@@ -26,6 +26,9 @@ function activate(e) {
             if (selectedCards[0].querySelector('.face').innerHTML === selectedCards[1].querySelector('.face').innerHTML) {
                 selectedCards = [];
                 currentMove = 0;
+                if (selectedCards[0].querySelector('.face').innerHTML.includes('escoba')) {
+                    document.querySelector('#successMessage').style.display = 'block';
+                }
             } else {
                 setTimeout(() => {
                     selectedCards[0].classList.remove('active');
@@ -69,6 +72,7 @@ function resetGame() {
     currentMove = 0;
     currentAttempts = 0;
     document.querySelector('#stats').innerHTML = '0 intentos';
+    document.querySelector('#successMessage').style.display = 'none'; // Ocultar el mensaje de éxito al reiniciar el juego
     initGame();
 }
 
